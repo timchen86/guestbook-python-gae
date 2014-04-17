@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+      Welcome to my guestbook<br>
+    <a href="{{ url }}">{{ url_linktext }}</a>
+    <hr>
+    {% for guestbook in guestbooks %}
+      {% if guestbook %}
+      <img src="http://graph.facebook.com/{{ guestbook.user.fbid }}/picture?type=square">
+        <b>{{ guestbook.user.fbname }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ guestbook.message|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+
+  </body>
+</html>
