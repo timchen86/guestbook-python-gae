@@ -10,3 +10,7 @@ handlers:
 
 - url: /.*
   script: guestbook.application
+
+libraries:
+- name: jinja2
+  version: latest
